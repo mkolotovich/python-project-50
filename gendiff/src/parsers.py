@@ -18,4 +18,3 @@ def parser(data, format):
             return yaml.load(open(get_fixture_path(data)), Loader=SafeLoader)
         case '.yml':
             return yaml.load(open(get_fixture_path(data)), Loader=SafeLoader)
-
