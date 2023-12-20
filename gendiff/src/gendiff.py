@@ -21,9 +21,7 @@ def get_fixture_path(filename):
                         'tests', 'fixtures', filename)
 
 
-def generate_diff(file_path1, file_path2):
-    file1 = json.load(open(get_fixture_path(file_path1)))
-    file2 = json.load(open(get_fixture_path(file_path2)))
+def generate_diff(file1, file2):
     result = {}
     data1 = []
     data2 = []

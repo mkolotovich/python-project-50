@@ -1,5 +1,5 @@
 import argparse
-from gendiff.src.gendiff import generate_diff
+from gendiff.src.parsers import parse_files
 
 parser = argparse.ArgumentParser(
     description='Compares two configuration files and shows a difference.',
@@ -14,7 +14,7 @@ args = parser.parse_args()
 
 
 def main():
-    print(generate_diff(args.first_file, args.second_file))
+    print(parse_files(args.first_file, args.second_file))
 
 
 if __name__ == '__main__':
