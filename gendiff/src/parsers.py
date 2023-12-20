@@ -1,9 +1,13 @@
-import pathlib
 import json
 import yaml
 from yaml.loader import SafeLoader
-from gendiff.src.gendiff import get_fixture_path
-from gendiff.src.gendiff import generate_diff
+import os
+import pathlib
+
+
+def get_fixture_path(filename):
+    return os.path.join(pathlib.Path(__file__).parent.parent.parent.absolute(),
+                        'tests', 'fixtures', filename)
 
 
 def parser(data, format):
@@ -15,8 +19,3 @@ def parser(data, format):
         case '.yml':
             return yaml.load(open(get_fixture_path(data)), Loader=SafeLoader)
 
-
-def parse_files(file1, file2):
-    file1_ext = pathlib.Path(file1).suffix
-    file2_ext = pathlib.Path(file2).suffix
-    return generate_diff(parser(file1, file1_ext), parser(file2, file2_ext))

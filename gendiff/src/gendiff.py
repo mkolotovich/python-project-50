@@ -1,6 +1,6 @@
 import json
-import os
 import pathlib
+from gendiff.src.parsers import parser
 
 
 def get_key(item):
@@ -16,12 +16,7 @@ def compare(a):
     return list(a.keys())[0][2:]
 
 
-def get_fixture_path(filename):
-    return os.path.join(pathlib.Path(__file__).parent.parent.parent.absolute(),
-                        'tests', 'fixtures', filename)
-
-
-def generate_diff(file1, file2):
+def build_tree(file1, file2):
     result = {}
     data1 = []
     data2 = []
@@ -50,3 +45,15 @@ def generate_diff(file1, file2):
     resultString = json.dumps(sortedObject, indent=2)
     resultValue = resultString.replace('"', '')
     return resultValue
+
+
+def get_data(file_path):
+    format = pathlib.Path(file_path).suffix
+    return parser(file_path, format)
+
+
+def generate_diff(file_path1, file_path2):
+    parsed_data1 = get_data(file_path1)
+    parsed_data2 = get_data(file_path2)
+    tree = build_tree(parsed_data1, parsed_data2)
+    return tree
