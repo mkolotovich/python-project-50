@@ -18,7 +18,7 @@ def make_node(key, type, children, **kwargs):
         node['value'] = 'false'
     if (node.get('value') is True):
         node['value'] = 'true'
-    if (node.get('new_value') is None):
+    if ('new_value' in node and node.get('new_value') is None):
         node['new_value'] = 'null'
     return node
 

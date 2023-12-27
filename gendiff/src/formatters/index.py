@@ -1,4 +1,5 @@
 from gendiff.src.formatters.stylish import stylish
+from gendiff.src.formatters.plain import plain
 
 
 def format_data(format_name, structure):
