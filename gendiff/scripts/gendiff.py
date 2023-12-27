@@ -10,7 +10,8 @@ parent_group = parser.add_argument_group(title='optional arguments')
 parent_group.add_argument(
     '-h', '--help', action='help', help='show this help message and exit')
 parent_group.add_argument('-f', '--format', help='set format of output',
-                          choices=['plain', 'stylish'], default='stylish')
+                          choices=['plain', 'stylish', 'json'],
+                          default='stylish')
 args = parser.parse_args()
 
 
